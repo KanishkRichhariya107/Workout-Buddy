@@ -18,4 +18,5 @@ const workoutSchema= new Schema({
     }
 },{timestamps:true})
 
+//use singular workout because mongodb will create collection with plular workouts
 module.exports=mongoose.model('Workout',workoutSchema)

@@ -1,41 +1,25 @@
 const express=require('express')
 //this express.router creates a instance for us
 const router=express.Router()
+const {createWorkout,getWorkouts,getWorkout,deleteWorkout,updateWorkout}=require('../controllers/workoutController')
+
+//WE USE THIS TO INTERACT WITH THE DATABASE
 const Workout=require('../models/workoutmodel')
 
 // GET all workouts
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all workouts'})
-  })
+router.get('/', getWorkouts)
   
   // GET a single workout
-  router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single workout'})
-  })
+  router.get('/:id', getWorkout)
   
   // POST a new workout
-  router.post('/', async(req, res) => {
+  router.post('/', createWorkout)
 
-    const {title,load,reps}=req.body
-    try{
-      const workout=await Workout.create({title,reps,load})
-      res.status(200).json(workout)
-
-    }
-    catch(error){
-      res.status(400).json({error:error.message})
-    }
-
-  })
   
   // DELETE a workout
-  router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a workout'})
-  })
+  router.delete('/:id',deleteWorkout)
   
   // UPDATE a workout
-  router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE a workout'})
-  })
+  router.patch('/:id', updateWorkout)
   
 module.exports=router;
