@@ -22,7 +22,7 @@ app.use((req,res,next)=>{
 //this is also a middle wear
 //this basically attaches all the routes present in the workoutRoutes 
 //this only works if this url is present in the start
-app.use('/api/workout',workoutRoutes)
+app.use('/api/workouts',workoutRoutes)
 
 //connect to db and listen to server
 mongoose.connect(process.env.MONGO_URI)

@@ -1,7 +1,7 @@
 const express=require('express')
 //this express.router creates a instance for us
 const router=express.Router()
-const {createWorkout,getWorkouts,getWorkout,deleteWorkout,updateWorkout}=require('../controllers/workoutController')
+const { createWorkout, getWorkouts, getWorkout, deleteWorkout, updateWorkout }=require('../controllers/workoutController')
 
 //WE USE THIS TO INTERACT WITH THE DATABASE
 const Workout=require('../models/workoutmodel')
