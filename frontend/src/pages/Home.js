@@ -33,7 +33,7 @@ const Home=()=>{
             .catch((error) => console.error("Error fetching workouts:", error));*/
         }
         fetchworkouts()
-    },[])
+    },[dispatch])
     return(
         <div className="home">
             <div className="workouts">

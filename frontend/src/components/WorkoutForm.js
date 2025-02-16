@@ -8,6 +8,7 @@ const WorkoutForm=()=>{
     const[load,setLoad]=useState('')
     const[reps,setreps]=useState('')
     const[error,setError]=useState(null)
+    const[emptyfields,setEmptyfields]=useState([])
 
 
     const submitHandler=async(e)=>{
@@ -30,6 +31,8 @@ const WorkoutForm=()=>{
         {
             //because our json has an error property  can check it in controller
             setError(json.error)
+            //because json also has an empty field optioncan check it in controller
+            setEmptyfields(Array.isArray(json.emptyfields) ? json.emptyfields : [])
         }
         if(response.ok)
         {
@@ -52,6 +55,7 @@ const WorkoutForm=()=>{
             type="text"
             onChange={(e)=>{setTitle(e.target.value)}}
             value={title}
+            className={emptyfields.includes('title') ? 'error' : ''}
              />
 
             <label >Load in kg</label>
@@ -59,6 +63,7 @@ const WorkoutForm=()=>{
             type="text"
             onChange={(e)=>{setLoad(e.target.value)}}
             value={load}
+            className={emptyfields.includes('load') ? 'error' : ''}
              />
 
             <label >reps</label>
@@ -66,6 +71,7 @@ const WorkoutForm=()=>{
             type="text"
             onChange={(e)=>{setreps(e.target.value)}}
             value={reps}
+            className={emptyfields.includes('reps') ? 'error' : ''}
              />
 
              <button >Add Workout</button>
